@@ -24,8 +24,7 @@ echo しばらくお待ち下さい
 :# インストール用のexeの階層に移動
 cd /d "%~dp0"
 
-if not exist C:\Temp\ md C:\Temp\
-dir > "C:\Temp\test.txt"
+:# if not exist C:\Temp\ md C:\Temp\
 :# cd C:\Temp\
 
 REM curl -L "https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" -o rustdesk.exe
