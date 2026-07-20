@@ -22,24 +22,21 @@ echo RustDeskをインストールしています
 echo しばらくお待ち下さい
 
 :# インストール用のexeの階層に移動
-cd /d "%~dp0"
+:# cd /d "%~dp0"
 
 if not exist C:\Temp\ md C:\Temp\
 dir > "C:\Temp\test.txt"
-copy .\rustdesk.exe C:\Temp\rustdesk.exe > nu
-
-
 cd C:\Temp\
 
 REM curl -L "https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" -o rustdesk.exe
 
-REM if exist "c:\Program Files (x86)\MOTEX\LanScope Cat MR\Distribution\20260501\rustdesk-1.4.5-x86_64.exe" copy "c:\Program Files (x86)\MOTEX\LanScope Cat MR\Distribution\20260501\rustdesk-1.4.5-x86_64.exe" rustdesk.exe > nul
-REM if exist "c:\Program Files\MOTEX\LanScope Cat MR\Distribution\20260501\rustdesk-1.4.5-x86_64.exe" copy "c:\Program Files (x86)\MOTEX\LanScope Cat MR\Distribution\20260501\rustdesk-1.4.5-x86_64.exe" rustdesk.exe > nul
+if exist "c:\Program Files (x86)\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" copy "c:\Program Files (x86)\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" rustdesk.exe > nul
+if exist "c:\Program Files\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" copy "c:\Program Files\MOTEX\LanScope Client\Distribution\20260720\rrustdesk.exe" rustdesk.exe > nul
 
 rustdesk.exe --silent-install
-:# timeout /t 20
+timeout /t 20
 :# timeoutコマンドだと途中で終わらせることができるのでsleepを使う
-powershell -Command "Start-Sleep -s 20"
+:# powershell -Command "Start-Sleep -s 20"
 
 :# デスクトップのショートカット削除
 del /f "%PUBLIC%\Desktop\RustDesk.lnk" 2>nul
@@ -52,8 +49,8 @@ echo\
 
 cd "C:\Program Files\RustDesk\"
 rustdesk.exe --install-service
-:# timeout /t 20 /nobreak
-powershell -Command "Start-Sleep -s 20"
+timeout /t 20 /nobreak
+:# powershell -Command "Start-Sleep -s 20"
 
 for /f "delims=" %%i in ('rustdesk.exe --get-id ^| more') do set rustdesk_id=%%i
 
