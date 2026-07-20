@@ -22,16 +22,16 @@ echo RustDeskをインストールしています
 echo しばらくお待ち下さい
 
 :# インストール用のexeの階層に移動
-:# cd /d "%~dp0"
+cd /d "%~dp0"
 
 if not exist C:\Temp\ md C:\Temp\
 dir > "C:\Temp\test.txt"
-cd C:\Temp\
+:# cd C:\Temp\
 
 REM curl -L "https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" -o rustdesk.exe
 
-if exist "c:\Program Files (x86)\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" copy "c:\Program Files (x86)\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" rustdesk.exe > nul
-if exist "c:\Program Files\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" copy "c:\Program Files\MOTEX\LanScope Client\Distribution\20260720\rrustdesk.exe" rustdesk.exe > nul
+REM if exist "c:\Program Files (x86)\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" copy "c:\Program Files (x86)\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" rustdesk.exe > nul
+REM if exist "c:\Program Files\MOTEX\LanScope Client\Distribution\20260720\rustdesk.exe" copy "c:\Program Files\MOTEX\LanScope Client\Distribution\20260720\rrustdesk.exe" rustdesk.exe > nul
 
 rustdesk.exe --silent-install
 timeout /t 20
