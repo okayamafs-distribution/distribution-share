@@ -24,6 +24,13 @@ echo しばらくお待ち下さい
 :# インストール用のexeの階層に移動
 cd /d "%~dp0"
 
+:# バッチが動いたかの確認用に出力
+set YYYYMMDD=%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%
+set HHMMSS=%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%
+set TIMESTAMP=%YYYYMMDD%_%HHMMSS%
+echo RustDeskインストール %TIMESTAMP% > log.txt
+
+
 :# if not exist C:\Temp\ md C:\Temp\
 :# cd C:\Temp\
 
@@ -57,9 +64,10 @@ rustdesk.exe --config %rustdesk_cfg%
 
 rustdesk.exe --password %rustdesk_pw%
 
+cd /d "%~dp0"
 echo ...............................................
 REM ID変数の値を表示
-echo RustDesk ID: %rustdesk_id%
+echo RustDesk ID: %rustdesk_id% >> log.txt
 
 :# REM パスワード変数の値を表示
 :# echo パスワード: %rustdesk_pw%
